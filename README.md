@@ -1,122 +1,93 @@
-# FinetuneDysarthria
+## Dysarthria Speech Recognition (ASR) Project
 
-Here’s a sample `README.md` file for your GitHub repository based on the files you uploaded:
+This project aims to build an Automatic Speech Recognition (ASR) system tailored for dysarthric speech using a fine-tuned Whisper model. The ASR system is implemented using Python and Hugging Face's `transformers` library, and provides a real-time demo using Gradio.
 
-```markdown
-# Fine-Tuning Whisper Model for ASR on Dysarthric Speech
+### Features
 
-This repository contains code to fine-tune the Whisper model for Automatic Speech Recognition (ASR) on dysarthric speech data, such as the TORGO dataset. The project includes scripts for data processing, model training, and evaluation, as well as a web application for deploying the ASR model.
+- Fine-tuning of OpenAI's Whisper models for improved recognition of dysarthric speech.
+- Real-time speech recognition demo using Gradio.
+- Evaluation of model performance using Word Error Rate (WER) and Character Error Rate (CER).
+- Data preprocessing and analysis scripts for the TORGO dataset.
 
-## Project Structure
+### Installation
 
-```
-.
-├── fine_tuning.py        # Script for fine-tuning Whisper models on dysarthric speech data
-├── dysarthria_asr_app.py # A web application for ASR demo on dysarthric speech
-├── process_data.py       # Data pre-processing and preparation for the ASR model
-├── plot.py               # Plotting and visualization of model performance
-└── README.md             # Project documentation (this file)
-```
-
-## Requirements
-
-Before running any of the scripts, make sure to install the necessary dependencies. You can do this by running the following command:
+To set up the project, ensure you have Python installed, then clone the repository and install the required dependencies:
 
 ```bash
+git clone https://github.com/your-username/dysarthria-asr.git
+cd dysarthria-asr
 pip install -r requirements.txt
 ```
 
-If a `requirements.txt` file does not exist, make sure to manually install these dependencies:
+### Usage
 
-- `torch`
-- `transformers`
-- `datasets`
-- `librosa`
-- `matplotlib`
-- `seaborn`
-- `flask` (for web app deployment)
-- `pydub`
-- `pandas`
+#### 1. Running the Real-time Demo
 
-## Files Description
-
-### `fine_tuning.py`
-
-This script is responsible for fine-tuning the pre-trained Whisper ASR models on dysarthric speech datasets. It includes the training loop, evaluation metrics such as Word Error Rate (WER) and Character Error Rate (CER), and logging.
-
-#### Usage:
-
-```bash
-python fine_tuning.py --dataset_path <path-to-dataset> --model_name whisper-small
-```
-
-### `dysarthria_asr_app.py`
-
-This script deploys a simple Flask web application that allows users to upload audio files and receive transcription using the fine-tuned Whisper model.
-
-#### Usage:
+To run the real-time ASR demo, execute the following command:
 
 ```bash
 python dysarthria_asr_app.py
 ```
 
-Then, navigate to `http://localhost:5000` in your browser to use the app.
+This will launch a Gradio interface in your browser, where you can use your microphone to test the model's transcription capabilities.
 
-### `process_data.py`
+#### 2. Fine-tuning the Whisper Model
 
-This script handles the pre-processing of the dysarthric speech dataset, such as converting audio to a compatible format, extracting features, and preparing data for model training.
-
-#### Usage:
+To fine-tune a Whisper model on your dataset, use the following script:
 
 ```bash
-python process_data.py --dataset_path <path-to-raw-data>
+python fine_tuning.py --model whisper-small --epochs 5000 --batch_size 16 --learning_rate 1e-5 --run_name "your-run-name"
 ```
 
-### `plot.py`
+Additional parameters such as `learning_rate`, `batch_size`, and `epochs` can be adjusted as needed.
 
-This script generates various visualizations of the model’s performance, including bar plots and box plots of WER and CER across different Whisper model variants.
+#### 3. Evaluation
 
-#### Usage:
+You can evaluate the performance of the trained model using:
+
+```bash
+python evaluation.py
+```
+
+The evaluation results will be saved to CSV files (`test_wer_cer.csv` and `all_test_predictions.csv`) for further analysis.
+
+#### 4. Plotting Results
+
+To visualize the performance metrics, run:
 
 ```bash
 python plot.py
 ```
 
-This will output figures to the `figures/` directory.
+This script will generate plots for WER and CER metrics, which will be saved in the `figures` directory.
 
-## Dataset
+### Data Preparation
 
-The main dataset used in this project is the [TORGO dataset](https://www.cs.toronto.edu/~complingweb/data/TORGO/torgo.html), which contains recordings of dysarthric and control speakers.
+The project includes scripts to process and split the TORGO dataset into training, validation, and test sets:
 
-Ensure the dataset is preprocessed and formatted correctly using `process_data.py` before training the models.
+- `process_data.py`: Prepares the data by extracting audio and text prompts.
+- `train_val_test_split.py`: Splits the data into training, validation, and test sets.
 
-## Results
+### Requirements
 
-- The fine-tuned models achieved significant improvements in WER and CER compared to the pre-trained versions.
-- Detailed visualizations can be found in the `figures/` directory after running the `plot.py` script.
+The project requires the following Python packages:
 
-## Running the Web App
+- `transformers==4.44.0`
+- `datasets==2.21.0`
+- `gradio==4.41.0`
+- `torch==1.13.1`
+- `torchaudio==0.13.1`
+- Other dependencies listed in `requirements.txt`
 
-To run the Flask web application for testing your fine-tuned ASR model on dysarthric speech, simply use:
-
-```bash
-python dysarthria_asr_app.py
-```
-
-Once running, visit `http://localhost:5000` to interact with the web interface and upload audio files for transcription.
-
-## License
+### License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
 
-### Key Components of the README:
+### Acknowledgements
 
-1. **Project Structure**: Lists the key files in the project.
-2. **Requirements**: Includes installation of necessary packages.
-3. **Files Description**: Provides brief descriptions and usage instructions for each file.
-4. **Dataset**: Mentions the dataset used (TORGO dataset) for the dysarthric speech.
-5. **Running the Web App**: Instructions for running the Flask application.
-6. **License**: Placeholder for licensing info.
+- OpenAI for the Whisper model.
+- TORGO dataset for dysarthric speech data.
 
-Let me know if you need any more details or adjustments!
+### Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue if you have suggestions or improvements.
