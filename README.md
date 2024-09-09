@@ -80,15 +80,3 @@ The project requires the following Python packages:
 - `torchaudio==0.13.1`
 - Other dependencies listed in `requirements.txt`
 
-### License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### Acknowledgements
-
-- OpenAI for the Whisper model.
-- TORGO dataset for dysarthric speech data.
-
-### Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue if you have suggestions or improvements.
