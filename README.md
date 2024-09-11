@@ -4,7 +4,7 @@ This project aims to build an Automatic Speech Recognition (ASR) system tailored
 We based our code on the "Fine-Tune Whisper For Multilingual ASR with 🤗 Transformers" tutorial (https://huggingface.co/blog/fine-tune-whisper)
 
 
-<p align="center"><img src="https://github.com/tomerco4/FinetuneDysarthria/blob/main/figures/Logo.webp" width="900" /></p>
+<p align="center"><img src="https://github.com/tomerco4/FinetuneDysarthria/blob/main/figures/Logo.webp" width="500" /></p>
 
 
 ### Features
