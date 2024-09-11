@@ -1,4 +1,4 @@
-## Dysarthria Speech Recognition (ASR) Project
+## Dysarthria Automatic Speech Recognition (ASR)
 
 This project aims to build an Automatic Speech Recognition (ASR) system tailored for dysarthric speech using a fine-tuned Whisper model. The ASR system is implemented using Python and HuggingFace's `transformers` library, and provides a real-time demo using Gradio.
 We based our code on the "Fine-Tune Whisper For Multilingual ASR with 🤗 Transformers" tutorial (https://huggingface.co/blog/fine-tune-whisper)
